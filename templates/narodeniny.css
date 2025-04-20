@@ -1,0 +1,198 @@
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #0f5fc8, #f5f5f5);
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .cake {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .layer {
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(to bottom, #f5b971, #f09451);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .layer:nth-child(1) {
+            width: 160px;
+        }
+
+        .layer:nth-child(2) {
+            width: 180px;
+        }
+
+        .layer:nth-child(3) {
+            width: 200px;
+        }
+
+        .candles {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            top: -40px;
+        }
+
+        .candle {
+            width: 10px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ff9090, #ffcccc);
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .flame {
+            width: 12px; /* Slimmer flame */
+            height: 25px;
+            background: radial-gradient(circle, #ffd700 30%, #ff4500 70%, transparent 100%);
+            position: absolute;
+            top: -23px;
+            left: 3%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.5);
+            animation: flicker 0.6s infinite alternate, glow 1s infinite ease-in-out;
+        }
+        
+        /* Additional glowing animation */
+        @keyframes glow {
+            0% { box-shadow: 0 0 12px rgba(255, 140, 0, 0.6), 0 0 18px rgba(255, 69, 0, 0.4); }
+            50% { box-shadow: 0 0 15px rgba(255, 140, 0, 0.8), 0 0 22px rgba(255, 69, 0, 0.6); }
+            100% { box-shadow: 0 0 12px rgba(255, 140, 0, 0.6), 0 0 18px rgba(255, 69, 0, 0.4); }
+        }
+        
+        @keyframes flicker {
+            0% { transform: scale(0.9); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+.layer {
+    position: relative;
+}
+
+/* Layer decorations (dots) */
+.layer::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 6px;
+    background: radial-gradient(circle, #ff6f61 20%, transparent 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 111, 97, 0.6), 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Second decoration: stripes */
+.layer::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: repeating-linear-gradient(45deg, #f9dd90, #ffcc88 10px);
+    border-radius: 10px;
+}
+
+.layer {
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    margin: -10px auto; /* Ensure layers are closely stacked */
+}
+
+.candles {
+    position: absolute;
+    top: 240px; /* Adjust to place the candles on the topmost layer */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.candle {
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+
+.message {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.message {
+    font-size: 36px;
+    color: #ff6f61;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #e87c6e;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadein 1s ease, bounce 2s infinite;
+}
+
+/* Message animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Moves the text upward slightly */
+    }
+}
+.container {
+    display: flex;
+    flex-direction: column; /* Zoradí elementy vertikálne */
+    align-items: center; /* Zarovná všetko na stred */
+}
+
+.gift-button-container {
+    margin-top: 30px; /* Posunie tlačidlo nižšie */
+}
+.gift-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#giftButton {
+    background: linear-gradient(to bottom, #ffdb4d, #ffa500);
+    border: none;
+    border-radius: 10px;
+    color: rgb(207, 194, 21);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#giftButton:hover {
+    background: linear-gradient(to bottom, #ffa500, #ff8c00);
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+#giftButton:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
